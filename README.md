@@ -1,7 +1,7 @@
 # fastdfs-exporter
 fastdfs监控
 
-![image](https://github.com/whithen/fastdfs-exporter/FastDFSMonitor.jpg)
+![image](https://github.com/whithen/fastdfs-exporter/blob/master/FastDFSMonitor.png)
 
 ### docker运行
 
