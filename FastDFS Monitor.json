@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1585039344991,
+  "id": 1,
+  "iteration": 1605073344100,
   "links": [],
   "panels": [
     {
@@ -35,8 +35,8 @@
       "scopedVars": {
         "datasoucre": {
           "selected": true,
-          "text": "Prometheus-ALY",
-          "value": "Prometheus-ALY"
+          "text": "Prometheus",
+          "value": "Prometheus"
         }
       },
       "title": "TRACKER SERVER",
@@ -52,6 +52,12 @@
         "#299c46"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -83,7 +89,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -100,13 +105,13 @@
       "scopedVars": {
         "datasoucre": {
           "selected": true,
-          "text": "Prometheus-ALY",
-          "value": "Prometheus-ALY"
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "tracker": {
           "selected": false,
-          "text": "it01.gyenno.com:22122",
-          "value": "it01.gyenno.com:22122"
+          "text": "192.168.10.81:22122",
+          "value": "192.168.10.81:22122"
         }
       },
       "sparkline": {
@@ -117,7 +122,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "fastdfs_tracker_server_info{instance=\"192.168.10.73:9018\", job=\"fastdfs-exporter\", name=\"fastdfs\", tracker=\"192.168.10.81:22122\"}",
       "targets": [
         {
           "expr": "fastdfs_tracker_server_info{instance=~\"$instance\",tracker=~\"$tracker\"}",
@@ -160,6 +165,12 @@
         "#299c46"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -174,7 +185,7 @@
         "x": 12,
         "y": 1
       },
-      "id": 58,
+      "id": 88,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -191,7 +202,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -205,18 +215,18 @@
       ],
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 13,
       "scopedVars": {
         "datasoucre": {
           "selected": true,
-          "text": "Prometheus-ALY",
-          "value": "Prometheus-ALY"
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "tracker": {
           "selected": false,
-          "text": "it02.gyenno.com:22122",
-          "value": "it02.gyenno.com:22122"
+          "text": "192.168.10.82:22122",
+          "value": "192.168.10.82:22122"
         }
       },
       "sparkline": {
@@ -227,7 +237,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "fastdfs_tracker_server_info{instance=\"192.168.10.73:9018\", job=\"fastdfs-exporter\", name=\"fastdfs\", tracker=\"192.168.10.82:22122\"}",
       "targets": [
         {
           "expr": "fastdfs_tracker_server_info{instance=~\"$instance\",tracker=~\"$tracker\"}",
@@ -292,6 +302,12 @@
         "#299c46"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -302,7 +318,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
+        "w": 4,
         "x": 0,
         "y": 5
       },
@@ -323,7 +339,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -357,7 +372,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "fastdfs_storage_server_info{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "fastdfs_storage_server_info{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -365,7 +380,7 @@
           "refId": "A"
         }
       ],
-      "thresholds": "0.1,0.9",
+      "thresholds": "0,6",
       "timeFrom": null,
       "timeShift": null,
       "title": "运行状态：$storage",
@@ -379,16 +394,131 @@
         },
         {
           "op": "=",
-          "text": "Up",
+          "text": "OFFLINE",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DELETED",
           "value": "1"
         },
         {
           "op": "=",
-          "text": "Down",
-          "value": "0"
+          "text": "INIT",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "WAIT_SYNC",
+          "value": "3"
+        },
+        {
+          "op": "=",
+          "text": "SYNCING",
+          "value": "4"
+        },
+        {
+          "op": "=",
+          "text": "ONLINE",
+          "value": "5"
+        },
+        {
+          "op": "=",
+          "text": "ACTIVE",
+          "value": "6"
         }
       ],
       "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "from": "null",
+              "id": 0,
+              "text": "N/A",
+              "to": "null",
+              "type": 2
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#37872D",
+                "value": null
+              },
+              {
+                "color": "#37872D",
+                "value": 0
+              },
+              {
+                "color": "#37872D",
+                "value": 10000
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 4,
+        "y": 5
+      },
+      "id": 87,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.1.3",
+      "repeat": "storage",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage1",
+          "value": "storage1"
+        }
+      },
+      "targets": [
+        {
+          "expr": "fastdfs_storage_version{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Version",
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
@@ -401,6 +531,12 @@
       ],
       "datasource": "$datasoucre",
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "s",
       "gauge": {
         "maxValue": 100,
@@ -411,8 +547,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 5,
+        "w": 3,
+        "x": 7,
         "y": 5
       },
       "id": 9,
@@ -432,7 +568,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -466,7 +601,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "time() - fastdfs_join_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -501,6 +636,12 @@
       ],
       "datasource": "$datasoucre",
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "s",
       "gauge": {
         "maxValue": 100,
@@ -511,8 +652,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 9,
+        "w": 3,
+        "x": 10,
         "y": 5
       },
       "id": 6,
@@ -532,7 +673,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -566,7 +706,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "time() - fastdfs_up_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -592,26 +732,19 @@
     {
       "cacheTimeout": null,
       "datasource": "$datasoucre",
-      "gridPos": {
-        "h": 3,
-        "w": 11,
-        "x": 13,
-        "y": 5
-      },
-      "id": 8,
-      "links": [],
-      "options": {
-        "displayMode": "lcd",
-        "fieldOptions": {
-          "calcs": [
-            "last"
-          ],
-          "defaults": {
-            "mappings": [],
-            "max": 100,
-            "min": 0,
-            "nullValueMode": "connected",
-            "thresholds": [
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
               {
                 "color": "green",
                 "value": null
@@ -624,15 +757,33 @@
                 "color": "red",
                 "value": 80
               }
-            ],
-            "unit": "percent"
+            ]
           },
-          "override": {},
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 13,
+        "y": 5
+      },
+      "id": 8,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
           "values": false
         },
-        "orientation": "horizontal"
+        "showUnfilled": true
       },
-      "pluginVersion": "6.4.3",
+      "pluginVersion": "7.1.3",
       "repeat": "storage",
       "repeatDirection": "v",
       "scopedVars": {
@@ -663,6 +814,536 @@
     },
     {
       "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#C4162A",
+        "#FF9830",
+        "#299c46"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 8
+      },
+      "id": 100,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 49,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "fastdfs_storage_server_info{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.81\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage2\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "fastdfs_storage_server_info{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,6",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "运行状态：$storage",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        },
+        {
+          "op": "=",
+          "text": "OFFLINE",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DELETED",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "INIT",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "WAIT_SYNC",
+          "value": "3"
+        },
+        {
+          "op": "=",
+          "text": "SYNCING",
+          "value": "4"
+        },
+        {
+          "op": "=",
+          "text": "ONLINE",
+          "value": "5"
+        },
+        {
+          "op": "=",
+          "text": "ACTIVE",
+          "value": "6"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "from": "null",
+              "id": 0,
+              "text": "N/A",
+              "to": "null",
+              "type": 2
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#37872D",
+                "value": null
+              },
+              {
+                "color": "#37872D",
+                "value": 0
+              },
+              {
+                "color": "#37872D",
+                "value": 10000
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 4,
+        "y": 8
+      },
+      "id": 101,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.1.3",
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 87,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "targets": [
+        {
+          "expr": "fastdfs_storage_version{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Version",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 7,
+        "y": 8
+      },
+      "id": 102,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 9,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "#1F60C4",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.81\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage2\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "time() - fastdfs_join_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "intervalFactor": 2,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Jointime",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 10,
+        "y": 8
+      },
+      "id": 103,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 6,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.81\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage2\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "time() - fastdfs_up_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Uptime",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 13,
+        "y": 8
+      },
+      "id": 104,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.1.3",
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 8,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "targets": [
+        {
+          "expr": "(1-((fastdfs_free_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}) / (fastdfs_total_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"})))* 100",
+          "instant": true,
+          "intervalFactor": 2,
+          "legendFormat": "{{storage}} ",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：已用空间",
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
       "colorBackground": false,
       "colorPostfix": false,
       "colorPrefix": false,
@@ -673,6 +1354,12 @@
         "#d44a3a"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -685,7 +1372,7 @@
         "h": 3,
         "w": 6,
         "x": 0,
-        "y": 8
+        "y": 11
       },
       "id": 18,
       "interval": null,
@@ -704,7 +1391,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -738,7 +1424,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "group1@storage1",
       "targets": [
         {
           "expr": "fastdfs_success_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -769,6 +1455,12 @@
         "#d44a3a"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -781,7 +1473,7 @@
         "h": 3,
         "w": 6,
         "x": 6,
-        "y": 8
+        "y": 11
       },
       "id": 19,
       "interval": null,
@@ -800,7 +1492,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -834,7 +1525,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "group1@storage1",
       "targets": [
         {
           "expr": "fastdfs_success_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -863,6 +1554,12 @@
         "#d44a3a"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -875,7 +1572,7 @@
         "h": 3,
         "w": 6,
         "x": 12,
-        "y": 8
+        "y": 11
       },
       "id": 20,
       "interval": null,
@@ -894,7 +1591,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -928,7 +1624,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "storage1",
       "targets": [
         {
           "expr": "fastdfs_success_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -958,6 +1654,12 @@
         "#299c46"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "bytes",
       "gauge": {
         "maxValue": 100,
@@ -970,7 +1672,7 @@
         "h": 3,
         "w": 6,
         "x": 18,
-        "y": 8
+        "y": 11
       },
       "id": 55,
       "interval": null,
@@ -989,7 +1691,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1023,7 +1724,414 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "fastdfs_free_storage{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "fastdfs_free_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "100,200",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：可用空间",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#37872D",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 14
+      },
+      "id": 105,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 18,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "group1@storage2",
+      "targets": [
+        {
+          "expr": "fastdfs_success_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "{{group}}@{{storage}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：上传文件 ",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#1F60C4",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 14
+      },
+      "id": 106,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 19,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "group1@storage2",
+      "targets": [
+        {
+          "expr": "fastdfs_success_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "legendFormat": "{{group}}@{{storage}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：下载文件",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#C4162A",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 12,
+        "y": 14
+      },
+      "id": 107,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 20,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "#C4162A",
+        "show": true,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "storage2",
+      "targets": [
+        {
+          "expr": "fastdfs_success_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "legendFormat": "{{storage}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：删除文件",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "bytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 14
+      },
+      "id": 108,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "0",
+          "text": "N/A",
+          "to": "50"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 55,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "fastdfs_free_storage{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.81\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage2\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "fastdfs_free_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1046,14 +2154,22 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 24,
+        "w": 12,
         "x": 0,
-        "y": 11
+        "y": 17
       },
+      "hiddenSeries": false,
       "id": 57,
       "legend": {
         "alignAsTable": true,
@@ -1069,11 +2185,9 @@
       "lines": true,
       "linewidth": 2,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "paceLength": 10,
       "percentage": false,
+      "pluginVersion": "7.1.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1160,18 +2274,145 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 109,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "paceLength": 10,
+      "percentage": false,
+      "pluginVersion": "7.1.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 57,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group1",
+          "value": "group1"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "fastdfs_total_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"} - fastdfs_success_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{storage}}：上传失败文件",
+          "refId": "A"
+        },
+        {
+          "expr": "fastdfs_total_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"} - fastdfs_success_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{storage}}：下载失败文件",
+          "refId": "B"
+        },
+        {
+          "expr": "fastdfs_total_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"} - fastdfs_success_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{storage}}：删除失败文件",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$storage 文件操作失败曲线",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 23
       },
-      "id": 59,
+      "id": 89,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 36,
       "scopedVars": {
         "group": {
@@ -1193,6 +2434,12 @@
         "#299c46"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -1203,11 +2450,11 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
+        "w": 4,
         "x": 0,
-        "y": 18
+        "y": 24
       },
-      "id": 60,
+      "id": 90,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -1224,7 +2471,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1238,7 +2484,7 @@
       ],
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 49,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1261,7 +2507,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "fastdfs_storage_server_info{group=\"group2\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.82\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "fastdfs_storage_server_info{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1269,7 +2515,7 @@
           "refId": "A"
         }
       ],
-      "thresholds": "0.1,0.9",
+      "thresholds": "0,6",
       "timeFrom": null,
       "timeShift": null,
       "title": "运行状态：$storage",
@@ -1283,16 +2529,134 @@
         },
         {
           "op": "=",
-          "text": "Up",
+          "text": "OFFLINE",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DELETED",
           "value": "1"
         },
         {
           "op": "=",
-          "text": "Down",
-          "value": "0"
+          "text": "INIT",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "WAIT_SYNC",
+          "value": "3"
+        },
+        {
+          "op": "=",
+          "text": "SYNCING",
+          "value": "4"
+        },
+        {
+          "op": "=",
+          "text": "ONLINE",
+          "value": "5"
+        },
+        {
+          "op": "=",
+          "text": "ACTIVE",
+          "value": "6"
         }
       ],
       "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "from": "null",
+              "id": 0,
+              "text": "N/A",
+              "to": "null",
+              "type": 2
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#37872D",
+                "value": null
+              },
+              {
+                "color": "#37872D",
+                "value": 0
+              },
+              {
+                "color": "#37872D",
+                "value": 10000
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 4,
+        "y": 24
+      },
+      "id": 91,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.1.3",
+      "repeat": "storage",
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 87,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage1",
+          "value": "storage1"
+        }
+      },
+      "targets": [
+        {
+          "expr": "fastdfs_storage_version{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Version",
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
@@ -1305,6 +2669,12 @@
       ],
       "datasource": "$datasoucre",
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "s",
       "gauge": {
         "maxValue": 100,
@@ -1315,11 +2685,11 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 5,
-        "y": 18
+        "w": 3,
+        "x": 7,
+        "y": 24
       },
-      "id": 61,
+      "id": 92,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -1336,7 +2706,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1350,7 +2719,7 @@
       ],
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 9,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1373,7 +2742,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "{group=\"group2\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.82\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "time() - fastdfs_join_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1408,6 +2777,12 @@
       ],
       "datasource": "$datasoucre",
       "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "s",
       "gauge": {
         "maxValue": 100,
@@ -1418,11 +2793,11 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 9,
-        "y": 18
+        "w": 3,
+        "x": 10,
+        "y": 24
       },
-      "id": 62,
+      "id": 93,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -1439,7 +2814,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1453,7 +2827,7 @@
       ],
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1476,7 +2850,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "{group=\"group2\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.82\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "time() - fastdfs_up_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1502,26 +2876,19 @@
     {
       "cacheTimeout": null,
       "datasource": "$datasoucre",
-      "gridPos": {
-        "h": 3,
-        "w": 11,
-        "x": 13,
-        "y": 18
-      },
-      "id": 63,
-      "links": [],
-      "options": {
-        "displayMode": "lcd",
-        "fieldOptions": {
-          "calcs": [
-            "last"
-          ],
-          "defaults": {
-            "mappings": [],
-            "max": 100,
-            "min": 0,
-            "nullValueMode": "connected",
-            "thresholds": [
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
               {
                 "color": "green",
                 "value": null
@@ -1534,18 +2901,36 @@
                 "color": "red",
                 "value": 80
               }
-            ],
-            "unit": "percent"
+            ]
           },
-          "override": {},
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 13,
+        "y": 24
+      },
+      "id": 94,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
           "values": false
         },
-        "orientation": "horizontal"
+        "showUnfilled": true
       },
-      "pluginVersion": "6.4.3",
+      "pluginVersion": "7.1.3",
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 8,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1576,16 +2961,20 @@
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": false,
-      "colorPrefix": false,
-      "colorValue": true,
+      "colorBackground": true,
+      "colorValue": false,
       "colors": [
-        "#37872D",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
+        "#C4162A",
+        "#FF9830",
+        "#299c46"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -1596,11 +2985,11 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
+        "w": 4,
         "x": 0,
-        "y": 21
+        "y": 27
       },
-      "id": 64,
+      "id": 110,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -1617,7 +3006,543 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 90,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "fastdfs_storage_server_info{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "fastdfs_storage_server_info{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0,6",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "运行状态：$storage",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        },
+        {
+          "op": "=",
+          "text": "OFFLINE",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "DELETED",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "INIT",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "WAIT_SYNC",
+          "value": "3"
+        },
+        {
+          "op": "=",
+          "text": "SYNCING",
+          "value": "4"
+        },
+        {
+          "op": "=",
+          "text": "ONLINE",
+          "value": "5"
+        },
+        {
+          "op": "=",
+          "text": "ACTIVE",
+          "value": "6"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "from": "null",
+              "id": 0,
+              "text": "N/A",
+              "to": "null",
+              "type": 2
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#37872D",
+                "value": null
+              },
+              {
+                "color": "#37872D",
+                "value": 0
+              },
+              {
+                "color": "#37872D",
+                "value": 10000
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 4,
+        "y": 27
+      },
+      "id": 111,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.1.3",
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 91,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "targets": [
+        {
+          "expr": "fastdfs_storage_version{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Version",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 7,
+        "y": 27
+      },
+      "id": 112,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 92,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "#1F60C4",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "time() - fastdfs_join_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "intervalFactor": 2,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Jointime",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "decimals": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 10,
+        "y": 27
+      },
+      "id": 113,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 93,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "time() - fastdfs_up_time{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：Uptime",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 13,
+        "y": 27
+      },
+      "id": 114,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.1.3",
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 94,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "targets": [
+        {
+          "expr": "(1-((fastdfs_free_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}) / (fastdfs_total_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"})))* 100",
+          "instant": true,
+          "intervalFactor": 2,
+          "legendFormat": "{{storage}} ",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：已用空间",
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#37872D",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 30
+      },
+      "id": 95,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1631,7 +3556,7 @@
       ],
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 18,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1654,7 +3579,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "group2@storage1",
       "targets": [
         {
           "expr": "fastdfs_success_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1685,6 +3610,12 @@
         "#d44a3a"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -1697,9 +3628,9 @@
         "h": 3,
         "w": 6,
         "x": 6,
-        "y": 21
+        "y": 30
       },
-      "id": 65,
+      "id": 96,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -1716,7 +3647,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1730,7 +3660,7 @@
       ],
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 19,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1753,7 +3683,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "group2@storage1",
       "targets": [
         {
           "expr": "fastdfs_success_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1782,6 +3712,12 @@
         "#d44a3a"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -1794,9 +3730,9 @@
         "h": 3,
         "w": 6,
         "x": 12,
-        "y": 21
+        "y": 30
       },
-      "id": 66,
+      "id": 97,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -1813,7 +3749,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1827,7 +3762,7 @@
       ],
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 20,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1850,7 +3785,7 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "storage1",
       "targets": [
         {
           "expr": "fastdfs_success_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1880,6 +3815,12 @@
         "#299c46"
       ],
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "bytes",
       "gauge": {
         "maxValue": 100,
@@ -1892,9 +3833,9 @@
         "h": 3,
         "w": 6,
         "x": 18,
-        "y": 21
+        "y": 30
       },
-      "id": 67,
+      "id": 98,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -1911,7 +3852,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1925,7 +3865,7 @@
       ],
       "repeat": "storage",
       "repeatDirection": "v",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 55,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1948,7 +3888,418 @@
         "ymax": null,
         "ymin": null
       },
-      "tableColumn": "",
+      "tableColumn": "fastdfs_free_storage{group=\"group2\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.82\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
+      "targets": [
+        {
+          "expr": "fastdfs_free_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "100,200",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：可用空间",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#37872D",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 33
+      },
+      "id": 115,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 95,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "group1@storage1",
+      "targets": [
+        {
+          "expr": "fastdfs_success_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "{{group}}@{{storage}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：上传文件 ",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#1F60C4",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 33
+      },
+      "id": 116,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 96,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "group1@storage1",
+      "targets": [
+        {
+          "expr": "fastdfs_success_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "legendFormat": "{{group}}@{{storage}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：下载文件",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#C4162A",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 12,
+        "y": 33
+      },
+      "id": 117,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 97,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "#C4162A",
+        "show": true,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "storage1",
+      "targets": [
+        {
+          "expr": "fastdfs_success_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "instant": true,
+          "legendFormat": "{{storage}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$storage：删除文件",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#299c46"
+      ],
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "bytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 33
+      },
+      "id": 118,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "0",
+          "text": "N/A",
+          "to": "50"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 98,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "fastdfs_free_storage{group=\"group1\", instance=\"192.168.10.73:9018\", ip=\"192.168.10.73\", job=\"fastdfs-exporter\", name=\"fastdfs\", storage=\"storage1\", version=\"6.06\"}",
       "targets": [
         {
           "expr": "fastdfs_free_storage{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
@@ -1971,15 +4322,23 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
-        "w": 24,
+        "w": 12,
         "x": 0,
-        "y": 24
+        "y": 36
       },
-      "id": 68,
+      "hiddenSeries": false,
+      "id": 99,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -1994,17 +4353,15 @@
       "lines": true,
       "linewidth": 2,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "paceLength": 10,
       "percentage": false,
+      "pluginVersion": "7.1.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "repeat": "storage",
       "repeatDirection": "h",
-      "repeatIteration": 1585039344991,
+      "repeatIteration": 1605073344100,
       "repeatPanelId": 57,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2086,17 +4443,145 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasoucre",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "hiddenSeries": false,
+      "id": 119,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "paceLength": 10,
+      "percentage": false,
+      "pluginVersion": "7.1.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1605073344100,
+      "repeatPanelId": 99,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "group": {
+          "selected": false,
+          "text": "group2",
+          "value": "group2"
+        },
+        "storage": {
+          "selected": false,
+          "text": "storage2",
+          "value": "storage2"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "fastdfs_total_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"} - fastdfs_success_upload_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{storage}}：上传失败文件",
+          "refId": "A"
+        },
+        {
+          "expr": "fastdfs_total_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"} - fastdfs_success_download_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{storage}}：下载失败文件",
+          "refId": "B"
+        },
+        {
+          "expr": "fastdfs_total_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"} - fastdfs_success_delete_count{instance=~\"$instance\",group=~\"$group\",storage=~\"$storage\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{storage}}：删除失败文件",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$storage 文件操作失败曲线",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "5m",
-  "schemaVersion": 20,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "tags": [],
+          "selected": false,
           "text": "Prometheus",
           "value": "Prometheus"
         },
@@ -2115,8 +4600,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "192.168.10.1:9018",
-          "value": "192.168.10.2:9018"
+          "selected": false,
+          "text": "192.168.10.73:9018",
+          "value": "192.168.10.73:9018"
         },
         "datasource": "$datasoucre",
         "definition": "label_values(fastdfs_tracker_server_info, instance) ",
@@ -2140,8 +4626,11 @@
       {
         "allValue": null,
         "current": {
+          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "$datasoucre",
         "definition": "label_values(fastdfs_tracker_server_info{instance=~\"$instance\"}, tracker) ",
@@ -2165,8 +4654,11 @@
       {
         "allValue": null,
         "current": {
+          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "$datasoucre",
         "definition": "label_values(fastdfs_group_info{instance=~\"$instance\"}, group) ",
@@ -2190,18 +4682,21 @@
       {
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "$datasoucre",
-        "definition": "label_values(fastdfs_storage_server_info{instance=~\"$instance\"}, storage) ",
+        "definition": "label_values(fastdfs_storage_server_info{instance=~\"$instance\",group=~\"$group\"}, storage) ",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "storage",
         "options": [],
-        "query": "label_values(fastdfs_storage_server_info{instance=~\"$instance\"}, storage) ",
+        "query": "label_values(fastdfs_storage_server_info{instance=~\"$instance\",group=~\"$group\"}, storage) ",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2244,5 +4739,5 @@
   "timezone": "",
   "title": "FastDFS Monitor",
   "uid": "ax6xo60Wz",
-  "version": 17
+  "version": 7
 }
