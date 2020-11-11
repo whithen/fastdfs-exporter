@@ -1,0 +1,96 @@
+version: '3.7'
+services:
+  tracker01:
+    image: whithen/fastdfs:v6.06
+    restart: always
+    environment:
+      SERVICE: "tracker"
+    networks:
+      fdfs:
+        ipv4_address: 172.50.0.11
+
+  tracker02:
+    image: whithen/fastdfs:v6.06
+    restart: always
+    environment:
+      SERVICE: "tracker"
+    networks:
+      fdfs:
+        ipv4_address: 172.50.0.12
+
+  group1-1:
+    image: whithen/fastdfs:v6.06
+    restart: always
+    environment:
+      SERVICE: "storage"
+      TRACKER: "172.50.0.11;172.50.0.12"
+      GROUP_LIST: "group1,group2"
+      GROUP_NAME: "group1"
+    networks:
+      fdfs:
+        ipv4_address: 172.50.0.21
+    depends_on:
+      - tracker01
+      - tracker02
+
+  group1-2:
+    image: whithen/fastdfs:v6.06
+    restart: always
+    environment:
+      SERVICE: "storage"
+      TRACKER: "172.50.0.11;172.50.0.12"
+      GROUP_LIST: "group1,group2"
+      GROUP_NAME: "group1"
+    networks:
+      fdfs:
+        ipv4_address: 172.50.0.22
+    depends_on:
+      - tracker01
+      - tracker02
+  
+  group2-1:
+    image: whithen/fastdfs:v6.06
+    restart: always
+    environment:
+      SERVICE: "storage"
+      TRACKER: "172.50.0.11;172.50.0.12"
+      GROUP_LIST: "group1,group2"
+      GROUP_NAME: "group2"
+    networks:
+      fdfs:
+        ipv4_address: 172.50.0.31
+    depends_on:
+      - tracker01
+      - tracker02
+
+  group2-2:
+    image: whithen/fastdfs:v6.06
+    restart: always
+    environment:
+      SERVICE: "storage"
+      TRACKER: "172.50.0.11;172.50.0.12"
+      GROUP_LIST: "group1,group2"
+      GROUP_NAME: "group2"
+    networks:
+      fdfs:
+        ipv4_address: 172.50.0.32
+    depends_on:
+      - tracker01
+      - tracker02
+  
+  exporter:
+    image: whithen/fastdfs-exporter:v6.06
+    restart: always
+    environment:
+      TRACKER_SERVER: "172.50.0.11;172.50.0.12"
+    depends_on:
+      - tracker01
+      - tracker02
+    networks:
+      fdfs:
+
+networks:
+   fdfs:
+      ipam:
+         config:
+         - subnet: 172.50.0.0/16
