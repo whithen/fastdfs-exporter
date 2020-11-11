@@ -8,6 +8,6 @@
 sudo docker run -it --rm \
 -p 9018:9018 \
 -e TRACKER_SERVER="192.168.10.81:22122;192.168.10.82:22122" \
-docekrimage
+whithen/fastdfs-exporter:v6.06
 
 ### curl localhost:9018/metrics
