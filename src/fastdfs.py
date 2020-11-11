@@ -28,6 +28,8 @@ fastdfs_disk_free_space = Gauge('fastdfs_disk_free_space', "fastdfs_disk_free_sp
                                 registry=REGISTRY)
 fastdfs_storage_server_info = Gauge('fastdfs_storage_server_info', "fastdfs_storage_server_info",
                                     ['group', 'storage', 'ip', 'version'], registry=REGISTRY)
+fastdfs_storage_version = Gauge('fastdfs_storage_version', "fastdfs_storage_version",
+                                    ['group', 'storage', 'ip', 'version'], registry=REGISTRY)
 fastdfs_join_time = Gauge('fastdfs_join_time', "fastdfs_join_time", ['group', 'storage', 'ip', 'version'],
                           registry=REGISTRY)
 fastdfs_up_time = Gauge('fastdfs_up_time', "fastdfs_up_time", ['group', 'storage', 'ip', 'version'],
@@ -92,17 +94,28 @@ def formatValue(value):
             timeStamp = time.mktime(datetime.datetime.strptime(result[0], "%Y-%m-%d %H:%M:%S").timetuple())
             value = float(timeStamp)
         # 匹配total storage = 1007799 MB
+        # 新版本disk total space = 12,204,700 MB: 删除,再匹配
+        if value.find("MB") != -1:
+            value = value.replace(',', '')
         result = re.findall("(\d+) MB$", value)
         if result: value = float(result[0]) * 1024 * 1024
         # 匹配ip_addr = 10.42.3.244  ACTIVE
         result = re.findall("(\d+\.\d+\.\d+\.\d+).+[A-Z]+", value)
         if result:
-            if "ACTIVE" in value:
-                value = 1
-            else:
+            if "OFFLINE" in value:
                 value = 0
-        # result = re.findall("(\d+)", value)
-        # if result: value = float(value)
+            elif "DELETED" in value:
+                value = 1
+            elif "INIT" in value:
+                value = 2
+            elif "WAIT_SYNC" in value:
+                value = 3
+            elif "SYNCING" in value:
+                value = 4
+            elif "ONLINE" in value:
+                value = 5
+            elif "ACTIVE" in value:
+                value = 6
     except:
         raise
     finally:
@@ -112,7 +125,7 @@ def formatValue(value):
 # sed替换字符串
 def cmdSedReplace(trackerList):
     try:
-        cmdLine = "sed -i 's/tracker_server=.*/tracker_server=" + trackerList + "/g' " + client_file
+        cmdLine = "sed -i 's/tracker_server.*=.*/tracker_server=" + trackerList + "/g' " + client_file
         os.popen(cmdLine).readlines()
     except:
         raise
@@ -157,7 +170,7 @@ def get_storage(cmdResult):
                 print("Group=", formatValue(result[0]))
                 group['group_no'] = formatValue(result[0])
                 group["storage"] = []
-                group_list = groupInfolist[:]
+                group_list = groupInfolist.copy()
                 continue
             # 如果解析到 Storage 则解析storage_list
             result = re.findall("Storage (\d+)", line)
@@ -217,6 +230,9 @@ def set_storage():
             fastdfs_storage_server_info.labels(group=group['group name'],
                                                storage=storage['storage_name'],
                                                ip=storage['id'], version=storage['version']).set(storage['ip_addr'])
+            fastdfs_storage_version.labels(group=group['group name'],
+                                               storage=storage['storage_name'],
+                                               ip=storage['id'], version=storage['version']).set(storage['version'])
             fastdfs_join_time.labels(group=group['group name'], storage=storage['storage_name'],
                                      ip=storage['id'], version=storage['version']).set(storage['join time'])
             # 如果storage异常则up time为空
