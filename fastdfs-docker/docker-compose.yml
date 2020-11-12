@@ -82,7 +82,7 @@ services:
     image: whithen/fastdfs-exporter:v6.06
     restart: always
     environment:
-      TRACKER_SERVER: "172.50.0.11;172.50.0.12"
+      TRACKER_SERVER: "172.50.0.11:22122;172.50.0.12:22122"
     depends_on:
       - tracker01
       - tracker02
