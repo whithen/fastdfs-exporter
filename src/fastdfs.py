@@ -143,12 +143,12 @@ def monitor(TRACKER_SERVER):
             cmdSedReplace(trackerList)
             cmdLine = "fdfs_monitor " + client_file
             cmdResult = os.popen(cmdLine).readlines()
-            # cmdResult非空则当前tracker正常，解析返回数据
-            if cmdResult:
+            # cmdResult包含"tracker server"则tracker正常，解析返回数据
+            if ''.join(cmdResult).find("tracker server") == -1:
+                tracker['status'] = 0
+            else:
                 tracker['status'] = 1
                 if not group: get_storage(cmdResult)
-            else:
-                tracker['status'] = 0
         except:
             raise
         trackerServer['tracker'].append(tracker)
