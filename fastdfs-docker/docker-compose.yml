@@ -23,7 +23,7 @@ services:
     restart: always
     environment:
       SERVICE: "storage"
-      TRACKER: "172.50.0.11;172.50.0.12"
+      TRACKER_LIST: "172.50.0.11;172.50.0.12"
       GROUP_LIST: "group1,group2"
       GROUP_NAME: "group1"
     networks:
@@ -38,7 +38,7 @@ services:
     restart: always
     environment:
       SERVICE: "storage"
-      TRACKER: "172.50.0.11;172.50.0.12"
+      TRACKER_LIST: "172.50.0.11;172.50.0.12"
       GROUP_LIST: "group1,group2"
       GROUP_NAME: "group1"
     networks:
@@ -47,13 +47,13 @@ services:
     depends_on:
       - tracker01
       - tracker02
-  
+
   group2-1:
     image: whithen/fastdfs:v6.06
     restart: always
     environment:
       SERVICE: "storage"
-      TRACKER: "172.50.0.11;172.50.0.12"
+      TRACKER_LIST: "172.50.0.11;172.50.0.12"
       GROUP_LIST: "group1,group2"
       GROUP_NAME: "group2"
     networks:
@@ -68,7 +68,7 @@ services:
     restart: always
     environment:
       SERVICE: "storage"
-      TRACKER: "172.50.0.11;172.50.0.12"
+      TRACKER_LIST: "172.50.0.11;172.50.0.12"
       GROUP_LIST: "group1,group2"
       GROUP_NAME: "group2"
     networks:
@@ -77,7 +77,7 @@ services:
     depends_on:
       - tracker01
       - tracker02
-  
+
   exporter:
     image: whithen/fastdfs-exporter:v6.06
     restart: always

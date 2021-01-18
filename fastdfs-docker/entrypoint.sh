@@ -1,12 +1,12 @@
 #!/bin/bash
-SERVICE=$SERVICE
+SERVICE=${SERVICE}
 
 STORAGE_BASE_PATH="/data/storage"
-STORAGE_LOG_FILE="$STORAGE_BASE_PATH/logs/storaged.log"
+STORAGE_LOG_FILE="${STORAGE_BASE_PATH}/logs/storaged.log"
 STORAGE_CONF_FILE="/etc/fdfs/storage.conf"
 
 TRACKER_BASE_PATH="/data/tracker"
-TRACKER_LOG_FILE="$TRACKER_BASE_PATH/logs/trackerd.log"
+TRACKER_LOG_FILE="${TRACKER_BASE_PATH}/logs/trackerd.log"
 TRACKER_CONF_FILE="/etc/fdfs/tracker.conf"
 
 tracker()
@@ -27,34 +27,30 @@ storage()
         mkdir -p ${STORAGE_BASE_PATH}
     fi
     echo "start fdfs_storgaed..."
-    echo TRACKER_SERVER=$TRACKER
+    echo TRACKER_LIST=${TRACKER_LIST}
     echo GROUP_LIST=${GROUP_LIST}
     echo GROUP_NAME=${GROUP_NAME}
-    if [ ! "$TRACKER" = "" ]
+    if [ ! -z ${TRACKER_LIST} ]
     then
         sed -i "s/^.*tracker_server.*=.*$/#tracker_server/" /etc/fdfs/storage.conf
         sed -i "s/^.*tracker_server.*=.*$/#tracker_server/" /etc/fdfs/mod_fastdfs.conf
-        tnum=`echo ${TRACKER} |grep ';' |wc -l`
-        echo TRACKER num = `expr $tnum + 1`
-        for((i=1;i<=$tnum+1;i++))
+        TRACKER_LIST=($(echo ${TRACKER_LIST} | tr ';' ' '))
+        for tracker in ${TRACKER_LIST[@]}
         do
-            tip=`echo ${TRACKER} |cut -d ';' -f $i`
-            echo TRACKER $i = $tip
-            ping $tip -c 3
-            sed -i "/#tracker_server/a\tracker_server=$tip:22122" /etc/fdfs/storage.conf
-            sed -i "/#tracker_server/a\tracker_server=$tip:22122" /etc/fdfs/mod_fastdfs.conf
+            echo ${tracker}
+            ping ${tracker} -c 2
+            sed -i "/#tracker_server/a\tracker_server=${tracker}:22122" /etc/fdfs/storage.conf
+            sed -i "/#tracker_server/a\tracker_server=${tracker}:22122" /etc/fdfs/mod_fastdfs.conf
         done
-        sed -i "s:^group_name.*=.*:group_name=$GROUP_NAME:g" /etc/fdfs/storage.conf
-        sed -i "s:^group_name.*=.*:group_name=$GROUP_NAME:g" /etc/fdfs/mod_fastdfs.conf
-        gnum=`echo ${GROUP_LIST} |grep ';' |wc -l`
-        echo GROUP_LIST num = `expr $gnum + 1`
-        sed -i "s:^group_count.*:group_count=`expr $gnum + 1`:g" /etc/fdfs/mod_fastdfs.conf
-        for((i=1;i<=$gnum+1;i++))
+        sed -i "s:^group_name.*=.*:group_name=${GROUP_NAME}:g" /etc/fdfs/storage.conf
+        sed -i "s:^group_name.*=.*:group_name=${GROUP_NAME}:g" /etc/fdfs/mod_fastdfs.conf
+        GROUP_LIST=($(echo ${GROUP_LIST} | tr ';' ' '))
+        sed -i "s:^group_count.*:group_count=${#GROUP_LIST[@]}:g" /etc/fdfs/mod_fastdfs.conf
+        for gname in ${GROUP_LIST[@]}
         do
-            gname=`echo ${GROUP_LIST} |cut -d ';' -f $i`
-            echo GROUP_LIST $i = $gname
-            echo "[$gname]
-group_name=$gname
+            echo ${gname}
+            echo "[${gname}]
+group_name=${gname}
 storage_server_port=23000
 store_path_count=1
 store_path0=/data/storage
