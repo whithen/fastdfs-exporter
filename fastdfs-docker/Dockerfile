@@ -37,7 +37,6 @@ RUN apt-get update -y \
   && sed -i 's:store_path0.*=.*:store_path0=/data/storage:g' /etc/fdfs/mod_fastdfs.conf \
   && sed -i 's:url_have_group_name.*:url_have_group_name=true:g' /etc/fdfs/mod_fastdfs.conf \
   && sed -i 's:base_path.*=.*:base_path=/data/tracker:g' /etc/fdfs/tracker.conf \
-  && sed -i 's:store_lookup.*=.*:store_lookup=0:g' /etc/fdfs/tracker.conf \
   && apt-get clean \
   && rm -rf /srv
 
