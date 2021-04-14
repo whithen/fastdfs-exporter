@@ -19,3 +19,16 @@ docker-compose up
 > root@964e69f7deb0:/opt# curl localhost:9018/metrics
 
 多网卡主机建议使用hostnetwork
+
+### 参数说明
+
+- SERVICE: [必选] tracker | storage（服务模式）
+- TRACKER_LIST: [storage模式必选] 192.168.10.100;192.168.10.101（tracker列表）
+- GROUP_LIST: [storage模式必选] group1,group2,group3（集群group列表）
+- GROUP_NAME: [storage模式必选] group1（当前group name）
+- connect_timeout: [可选] 链接超时（默认30s）
+- network_timeout: [可选] 网络超时（默认60s）
+- max_connections: [可选] 最大连接（默认10240）
+- store_lookup: [可选] 存储轮询（默认2:优先最大可用空间storage）
+- reserved_storage_space: [可选] 存储限制（默认10%:磁盘空间<10%不可用）
+- log_file_keep_days: [可选] 日志保留（默认7天）
